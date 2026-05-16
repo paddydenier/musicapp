@@ -6,3 +6,4 @@ reset:
 	docker compose down -v
 spring:
 	cd backend && ./mvnw spring-boot:run
+restart: reset up spring
