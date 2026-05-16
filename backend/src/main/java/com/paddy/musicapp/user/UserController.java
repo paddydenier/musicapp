@@ -39,6 +39,15 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @PostMapping("/{userId}/removeInstrument/{instrumentId}")
+    public ResponseEntity<User> removeInstrumentfromUser (
+        @PathVariable Long userId,
+        @PathVariable Long instrumentId
+    ) {
+        User updatedUser = userService.removeInstrumentFromUser(userId, instrumentId);
+        return ResponseEntity.ok(updatedUser);
+    }
+
     @GetMapping("/getUsers") 
     public ResponseEntity<List<UserResponse>> getUsers() {
         List<UserResponse> users = userService.getUsers();

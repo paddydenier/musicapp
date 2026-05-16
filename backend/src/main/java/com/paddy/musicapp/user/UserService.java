@@ -25,7 +25,7 @@ public class UserService {
     public User addInstrumentToUser(
         Long userId,
         Long instrumentId
-) {
+    ) {
 
     User user = userRepository
             .findById(userId)
@@ -36,6 +36,24 @@ public class UserService {
             .orElseThrow();
 
     user.getInstruments().add(instrument);
+
+    return userRepository.save(user);
+}
+
+    public User removeInstrumentFromUser(
+        Long userId,
+        Long instrumentId
+    ) {
+
+    User user = userRepository
+            .findById(userId)
+            .orElseThrow();
+
+    Instrument instrument = instrumentRepository
+            .findById(instrumentId)
+            .orElseThrow();
+
+    user.getInstruments().remove(instrument);
 
     return userRepository.save(user);
 }
