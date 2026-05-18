@@ -1,57 +1,48 @@
 import { useEffect, useState } from "react";
+
 import { api } from "./api/api";
 
-type User = {
-    id: number;
-    firstName: string;
-    lastName: string;
-    instruments: string[];
-};
+import type { UserResponse } from "./types/api";
+
+import UserCard from "./components/users/UserCard";
 
 function App() {
 
-    const [users, setUsers] = useState<User[]>([]);
+    const [users, setUsers] = useState<UserResponse[]>([]);
 
     useEffect(() => {
 
-       api.get("/users")
-    .then(response => {
-        setUsers(response.data);
-    }); 
+        api.get("/users")
+            .then(response => {
+
+                setUsers(response.data);
+
+            });
 
     }, []);
 
-   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    return (
 
-        <h1 className="text-5xl font-bold text-purple-600 mb-8">
-            Users
-        </h1>
+        <div className="min-h-screen bg-gray-100 p-8">
 
-        <div className="grid gap-4">
+            <h1 className="text-5xl font-bold text-purple-600 mb-8">
+                Users
+            </h1>
 
-            {users.map(user => (
+            <div className="grid gap-4">
 
-                <div
-                    key={user.id}
-                    className="bg-white rounded-2xl shadow p-6"
-                >
+                {users.map(user => (
 
-                    <h2 className="text-2xl font-semibold">
-                        {user.firstName} {user.lastName}
-                    </h2>
+                    <UserCard
+                        key={user.id}
+                        user={user}
+                    />
 
-                    <p className="text-gray-600 mt-2">
-                        Instruments:
-                        {" "}
-                        {user.instruments.join(", ")}
-                    </p>
+                ))}
 
-                </div>
-            ))}
+            </div>
         </div>
-    </div>
-); 
+    );
 }
 
 export default App;
