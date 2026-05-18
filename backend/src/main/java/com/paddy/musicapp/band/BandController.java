@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/band/v1")
+@RequestMapping("/api/v1/bands")
 public class BandController {
 
     private final BandService bandService;
@@ -17,7 +17,7 @@ public class BandController {
         this.bandService = bandService;
     }
 
-    @PostMapping("/addBand")
+    @PostMapping
     public ResponseEntity<BandResponse> addBand(
             @RequestBody Band band) {
 
@@ -27,7 +27,7 @@ public class BandController {
         return ResponseEntity.ok(savedBand);
     }
 
-    @GetMapping("/getBands")
+    @GetMapping
     public ResponseEntity<List<BandResponse>> getBands() {
 
         List<BandResponse> bands =

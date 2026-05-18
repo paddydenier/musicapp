@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("/instrument/v1")
+@RequestMapping("/api/v1/instruments")
 public class InstrumentController {
 
     private final InstrumentService instrumentService;
@@ -24,13 +24,13 @@ public class InstrumentController {
         this.instrumentService = instrumentService;
     }
 
-    @PostMapping("/addInstrument")
+    @PostMapping
     public ResponseEntity<Instrument> addInstrument(@RequestBody Instrument instrument) {
         Instrument savedInstrument = instrumentService.addInstrument(instrument);
         return ResponseEntity.ok(savedInstrument);
     }
 
-    @GetMapping("/getInstruments")
+    @GetMapping
     public ResponseEntity<List<Instrument>> getInstruments() {
         List<Instrument> instruments = instrumentService.getAllInstruments();
         return ResponseEntity.ok(instruments);
