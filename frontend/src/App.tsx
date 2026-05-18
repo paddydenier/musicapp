@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import UsersPage from "./pages/UsersPage";
+import BandsPage from "./pages/BandsPage";
 
 function App() {
 
@@ -30,6 +31,11 @@ function App() {
                 <Route
                     path="/users"
                     element={<UsersPage />}
+                />
+
+                <Route
+                    path="/bands"
+                    element={<BandsPage />}
                 />
 
             </Routes>

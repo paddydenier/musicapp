@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/v1/instruments")
+@CrossOrigin(origins = "http://localhost:5173")
 public class InstrumentController {
 
     private final InstrumentService instrumentService;

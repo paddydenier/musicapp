@@ -10,3 +10,9 @@ export type UserResponse = {
     instruments: string[];
     bands: BandSummary[];
 };
+
+export type BandResponse = {
+    id: number;
+    name: string;
+    members: UserResponse[];
+};
