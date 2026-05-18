@@ -16,3 +16,8 @@ export type BandResponse = {
     name: string;
     members: UserResponse[];
 };
+
+export type InstrumentResponse = {
+    id: number;
+    name: string;
+};

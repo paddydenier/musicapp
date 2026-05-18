@@ -7,6 +7,7 @@ import {
 
 import UsersPage from "./pages/UsersPage";
 import BandsPage from "./pages/BandsPage";
+import InstrumentsPage from "./pages/InstrumentsPage";
 
 function App() {
 
@@ -24,9 +25,19 @@ function App() {
                     Bands
                 </Link>
 
+                <Link to="/instruments">
+                    Instruments
+                </Link>
+
+
             </div>
 
             <Routes>
+
+                <Route
+                    path="/"
+                    element={<UsersPage />}
+                />
 
                 <Route
                     path="/users"
@@ -36,6 +47,11 @@ function App() {
                 <Route
                     path="/bands"
                     element={<BandsPage />}
+                />
+
+                <Route
+                    path="/instruments"
+                    element={<InstrumentsPage />}
                 />
 
             </Routes>
