@@ -1,35 +1,129 @@
 # BandMate
 
-This template should help get you started developing with Vue 3 in Vite.
+BandMate is a full-stack web application consisting of:
 
-## Recommended IDE Setup
+- a Spring Boot backend
+- a frontend powered by Node.js
+- Docker support for containerized development
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+---
 
-## Customize configuration
+# Requirements
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Before starting, make sure you have installed:
 
-## Project Setup
+- Java (recommended: Java 17+)
+- Maven
+- Node.js + npm
+- Docker + Docker Compose
+- `make`
 
-```sh
-npm install
+---
+
+# Project Structure
+
+```text
+BandMate/
+├── backend/
+├── frontend/
+├── docker-compose.yml
+├── Makefile
+└── README.md
 ```
 
-### Compile and Hot-Reload for Development
+---
 
-```sh
-npm run dev
+# Backend
+
+Start the Spring Boot backend with the help of the Makefile:
+
+```bash
+make spring
 ```
 
-### Compile and Minify for Production
+This runs:
 
-```sh
-npm run build
+```bash
+cd backend && ./mvnw spring-boot:run
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+---
 
-```sh
-npm run test:unit
+# Frontend
+
+Start the frontend development server with:
+
+```bash
+make frontend
 ```
+
+This runs:
+
+```bash
+cd frontend && npm run dev
+```
+
+---
+
+# Full Development Environment
+
+Run both backend and frontend simultaneously:
+
+```bash
+make dev
+```
+
+---
+
+# Docker Commands
+
+Start all Docker services in detached mode:
+
+```bash
+make up
+```
+
+Stop all running containers:
+
+```bash
+make down
+```
+
+Stop and fully reset containers and volumes:
+
+```bash
+make reset
+```
+
+---
+
+# Restart Everything
+
+To fully restart the application stack:
+
+```bash
+make restart
+```
+
+---
+
+# Available Make Commands
+
+| Command | Description |
+|---|---|
+| `make up` | Start Docker containers |
+| `make down` | Stop Docker containers |
+| `make reset` | Remove containers and volumes |
+| `make spring` | Run Spring Boot backend |
+| `make frontend` | Run frontend dev server |
+| `make dev` | Run backend and frontend together |
+| `make restart` | Reset and restart everything |
+
+---
+
+# Development Notes
+
+- Backend runs inside the `backend/` directory
+- Frontend runs inside the `frontend/` directory
+- Docker is used for local infrastructure/services
+- The frontend uses Vite (`npm run dev`) for development
